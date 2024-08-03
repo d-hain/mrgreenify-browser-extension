@@ -2,13 +2,25 @@
 
 // I have literally no idea why this is necessary, but it works and I cannot complain
 (() => {
-    // TODO: get random one and flip randomly
+    /**
+     * @param {number} max Maximum number (exclusive)
+     * @returns {number} Random integer between 0 and `max`.
+     */
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
     function getRandomImageUrl() {
         const imageFilePath = "images";
-        const imageAmount = 2;
-        const randomImageIndex = Math.floor(Math.random() * imageAmount);
+        const imageAmount = 4;
+        const randomImageIndex = getRandomInt(imageAmount);
 
-        return chrome.runtime.getURL(`${imageFilePath}/${randomImageIndex}.png`);
+        let extension = "png";
+        if (randomImageIndex > 1) {
+            extension = "gif";
+        }
+
+        return chrome.runtime.getURL(`${imageFilePath}/${randomImageIndex}.${extension}`);
     }
 
     /**
@@ -27,18 +39,51 @@
     function applyImage(thumbnail, imageUrl) {
         const image = new Image();
         image.src = imageUrl;
-        image.style.zIndex = 0;
-        image.style.position = "absolute";
-        image.style.top = 0;
-        image.style.left = 0;
-        image.style.width = "30%";
 
-        thumbnail.parentElement.appendChild(image);
+        const parent = thumbnail.parentElement;
+        const iStyle = image.style;
+        iStyle.position = "absolute";
+        iStyle.zIndex = 0;
+        iStyle.width = "30%";
+        console.log(parent);
+
+        // 0 - 4
+        const randomInt = getRandomInt(5);
+        switch (randomInt) {
+            // Top left corner
+            case 0: {
+                iStyle.top = 0;
+                iStyle.left = 0;
+                break;
+            }
+            // Top right corner
+            case 1: {
+                iStyle.top = 0;
+                iStyle.right = 0;
+                break;
+            }
+            // Thumbnail face left
+            case 2: {
+                iStyle.top = "15%";
+                iStyle.left = "10%";
+                break;
+            }
+            // Thumbnail face right
+            case 3: {
+                iStyle.top = "15%";
+                iStyle.right = "10%";
+                break;
+            }
+            // Thumbnail face middle
+            case 4: {
+                iStyle.top = "15%";
+                iStyle.left = "35%";
+                break;
+            }
+        }
+
+        parent.appendChild(image);
     }
-
-    // if (isEnabled) {
-    // setInterval(getThumbnails, 100);
-    // }
 
     setInterval(() => {
         for (const thumbnail of getThumbnails()) {
