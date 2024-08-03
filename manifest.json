@@ -5,6 +5,7 @@
     "description": "Puts MrGreen from LCOLONQ on every YouTube thumbnail.",
 
     "host_permissions": [ "*://*.youtube.com/*"],
+    "permissions": [ "storage" ],
     "content_scripts": [
         {
             "matches": [ "*://*.youtube.com/*" ],

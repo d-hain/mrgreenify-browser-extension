@@ -10,17 +10,26 @@
         return Math.floor(Math.random() * max);
     }
 
+    /**
+     * @typedef {object} ImageUrlReturn
+     * @property {string} imageUrl Url of the image
+     * @property {number} imageIndex Index of the image
+     * @returns {ImageUrlReturn}
+     */
     function getRandomImageUrl() {
         const imageFilePath = "images";
-        const imageAmount = 4;
+        const imageAmount = 6;
         const randomImageIndex = getRandomInt(imageAmount);
 
         let extension = "png";
-        if (randomImageIndex > 1) {
+        if (randomImageIndex > 3) {
             extension = "gif";
         }
 
-        return chrome.runtime.getURL(`${imageFilePath}/${randomImageIndex}.${extension}`);
+        return {
+            imageUrl: chrome.runtime.getURL(`${imageFilePath}/${randomImageIndex}.${extension}`),
+            imageIndex: randomImageIndex
+        };
     }
 
     /**
@@ -35,61 +44,104 @@
      * Adds the image over the thumbnail.
      * @param {Element} thumbnail
      * @param {string} imageUrl Url of the image to apply
+     * @param {number} imageIndex Index of the image
      */
-    function applyImage(thumbnail, imageUrl) {
+    function applyImage(thumbnail, imageUrl, imageIndex) {
         const image = new Image();
         image.src = imageUrl;
+        image.className = "mrgreen";
 
         const parent = thumbnail.parentElement;
         const iStyle = image.style;
         iStyle.position = "absolute";
         iStyle.zIndex = 0;
         iStyle.width = "30%";
-        console.log(parent);
 
-        // 0 - 4
-        const randomInt = getRandomInt(5);
-        switch (randomInt) {
-            // Top left corner
-            case 0: {
-                iStyle.top = 0;
-                iStyle.left = 0;
-                break;
+        // Custom positions for Chad MrGreens
+        const isMrChadFlex = imageIndex === 2;
+        const isMrChadPoint = imageIndex === 3;
+
+        if (isMrChadFlex || isMrChadPoint) {
+            iStyle.width = "auto";
+            iStyle.height = "100%";
+        }
+
+        if (isMrChadFlex) {
+            const randomInt = getRandomInt(2);
+            iStyle.bottom = 0;
+            switch (randomInt) {
+                // Left
+                case 0: {
+                    iStyle.left = 0;
+                    break;
+                }
+                // Right
+                case 1: {
+                    iStyle.right = 0;
+                    break;
+                }
             }
-            // Top right corner
-            case 1: {
-                iStyle.top = 0;
-                iStyle.right = 0;
-                break;
-            }
-            // Thumbnail face left
-            case 2: {
-                iStyle.top = "15%";
-                iStyle.left = "10%";
-                break;
-            }
-            // Thumbnail face right
-            case 3: {
-                iStyle.top = "15%";
-                iStyle.right = "10%";
-                break;
-            }
-            // Thumbnail face middle
-            case 4: {
-                iStyle.top = "15%";
-                iStyle.left = "35%";
-                break;
+        } else if (isMrChadPoint) {
+            iStyle.bottom = 0;
+            iStyle.left = 0;
+        } else {
+            // Normal MrGreens
+            // 0 - 4
+            const randomInt = getRandomInt(5);
+            switch (randomInt) {
+                // Top left corner
+                case 0: {
+                    iStyle.top = 0;
+                    iStyle.left = 0;
+                    break;
+                }
+                // Top right corner
+                case 1: {
+                    iStyle.top = 0;
+                    iStyle.right = 0;
+                    break;
+                }
+                // Thumbnail face left
+                case 2: {
+                    iStyle.top = "15%";
+                    iStyle.left = "10%";
+                    break;
+                }
+                // Thumbnail face right
+                case 3: {
+                    iStyle.top = "15%";
+                    iStyle.right = "10%";
+                    break;
+                }
+                // Thumbnail face middle
+                case 4: {
+                    iStyle.top = "15%";
+                    iStyle.left = "35%";
+                }
             }
         }
 
         parent.appendChild(image);
     }
 
+    // Main loop
     setInterval(() => {
-        for (const thumbnail of getThumbnails()) {
-            applyImage(thumbnail, getRandomImageUrl());
-        }
-    }, 1000);
+        chrome.storage.local.get("enabled", (data) => {
+            if (!data.enabled) {
+                const images = document.querySelectorAll(".mrgreen");
+                for (const image of images) {
+                    image.remove();
+                }
+
+                return;
+            }
+
+            for (const thumbnail of getThumbnails()) {
+                const { imageUrl, imageIndex } = getRandomImageUrl();
+                applyImage(thumbnail, imageUrl, imageIndex);
+            }
+        });
+    }, 250);
 
     // This is indeed cursed
 })();
