@@ -17,11 +17,24 @@ install it locally if you want. For installing locally see here:
 # Art credit
 
 The [icon](/icon.png), the emotes [0.png](/images/0.png),
-[1.png](/images/1.png) and the [.gif](/images)s are stolen from the
-[LCOLONQ Twitch channel](https://twitch.tv/LCOLONQ) and the
-[Discord Server](https://discord.gg/f4JTbgN7St).
+[1.png](/images/1.png) and the [.gif](/images)s are stolen from the [LCOLONQ
+Twitch channel](https://twitch.tv/LCOLONQ) and the [Discord
+Server](https://discord.gg/f4JTbgN7St).
 
 The two chad MrGreen artpieces ([2.png](/images/2.png) &&
 [3.png](/images/3.png)) were done by KotaruComplex whom you can find on
 [Twitch](https://twitch.tv/kotarucomplex) and
-[Twitter](https://x.com/KotaruComplex).
+[Twitter](https://x.com/KotaruComplex). The Copyright (c) for these still lies
+with KotaruComplex.
+
+# Resources
+
+I got started on this using the [Jambofy
+Extension](https://github.com/LiamHarrison25/Jambofy-Extension) as a reference.
+Additional useful resources are:
+- [Chrome Extension Tutorial](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world)
+- [Firefox Extension Tutorial](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension)
+- [Chrome Extension API Reference](https://developer.chrome.com/docs/extensions/reference)
+- [Chrome API TS Types](https://www.npmjs.com/package/@types/chrome)
+- [Firefox Publishing Extensions](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/)
+- [Chrome Publishing Extensions](https://developer.chrome.com/docs/webstore/publish/)
