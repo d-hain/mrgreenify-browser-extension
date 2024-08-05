@@ -1,16 +1,25 @@
-# MrGreenify for Chrome and Firefox
+# MrGreenify for Chrome and Firefox (Manifest V3)
+
+> [!IMPORTANT]
+> This is the Manifest V3 version of this extension. The version currently
+> available on [Firefox AMO](https://addons.mozilla.org) is still on Manifest
+> V2 and available on the `manifestv2` branch. If you want to use the Manifest
+> V3 version look for the install instructions below.
 
 # TODO: screenshot
 
 Puts MrGreen from [LCOLONQ](https://colonq.computer) on every YouTube thumbnail.
 
-# Install
+# Installing
 
-# TODO: chrome store page
-# TODO: firefox store page
+# TODO: chrome store page link
+# TODO: firefox store page link
 
 This extension is available on [Chrome](LINK) and [Firefox](LINK), but you can also just
-install it locally if you want. For installing locally see here:
+install it locally if you want. For installing locally follow these steps:
+
+1. Run `npm install` and `npm run build` in the root directory.
+1. Load the ZIP file in the `web-ext-artifacts` directory into your browser.
 - [Chrome Docs](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
 - [Firefox Docs](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
 
