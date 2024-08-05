@@ -1,8 +1,15 @@
 {
     "manifest_version": 3,
     "name": "MrGreenify",
-    "version": "0.1",
+    "version": "0.0.1",
     "description": "Puts MrGreen from LCOLONQ on every YouTube thumbnail.",
+    "homepage_url": "https://github.com/d-hain/mrgreenify-browser-extension",
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{410cfb0c-8874-41ea-949b-e3bcdccd35c4}"
+        }
+    },
 
     "host_permissions": [ "*://*.youtube.com/*"],
     "permissions": [ "storage" ],

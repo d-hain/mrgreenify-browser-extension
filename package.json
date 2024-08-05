@@ -1,5 +1,11 @@
 {
-  "devDependencies": {
-    "@types/chrome": "^0.0.269"
-  }
+    "scripts": {
+        "lint": "web-ext lint",
+        "dev": "web-ext lint && web-ext run",
+        "build": "web-ext build"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.269",
+        "web-ext": "^8.2.0"
+    }
 }

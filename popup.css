@@ -18,7 +18,7 @@ strong {
     display: inline-block;
 
     width: 100%;
-    height: 44%;
+    min-height: 7em;
 }
 
 .switch input {
@@ -47,8 +47,8 @@ strong {
     position: absolute;
     content: "";
 
-    height: 80%;
-    width: 35%;
+    height: 82%;
+    width: 40%;
     left: 3%;
     bottom: 6%;
 
@@ -68,5 +68,5 @@ input:checked + .slider {
 }
 
 input:checked + .slider::before {
-    transform: translateX(140%);
+    transform: translateX(120%);
 }
