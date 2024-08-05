@@ -32,7 +32,10 @@
     ],
 
     "action": {
-        "default_icon": "icon-128x128.png",
+        "default_icon": {
+            "48": "icon-48x48.png",
+            "128": "icon-128x128.png"
+        },
         "default_popup": "popup.html"
     },
 
