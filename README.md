@@ -2,17 +2,17 @@
 
 > [!IMPORTANT]
 > This is the Manifest V2 version of this extension. This version currently
-> available on [Firefox AMO](https://addons.mozilla.org). If you want to use
-> the Manifest V3 version look for the install instructions on the `master`
-> branch.
+> available on [Firefox AMO](https://addons.mozilla.org). The version currently
+> available on the [Chrome Web Store](https://chromewebstore.google.com) is
+> already on Manifest V3 and available on the `master` branch. If you want to
+> use the Manifest V3 version on Firefox look for the install instructions
+> below.
 
 ![Screenshot on Firefox](/screenshot-firefox.png)
 
 Puts MrGreen from [LCOLONQ](https://colonq.computer) on every YouTube thumbnail.
 
 # Installing
-
-# TODO: chrome store page link
 
 This extension is available on [Chrome](https://chromewebstore.google.com/detail/cedejgoafodaimpfnijegmafafekgaec) and [Firefox](https://addons.mozilla.org/addon/mrgreenify/), but you can also just
 install it locally if you want. For installing locally follow these steps:
