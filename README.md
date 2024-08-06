@@ -14,7 +14,7 @@ Puts MrGreen from [LCOLONQ](https://colonq.computer) on every YouTube thumbnail.
 
 # TODO: chrome store page link
 
-This extension is available on [Chrome](LINK) and [Firefox](https://addons.mozilla.org/addon/mrgreenify/), but you can also just
+This extension is available on [Chrome](https://chromewebstore.google.com/detail/cedejgoafodaimpfnijegmafafekgaec) and [Firefox](https://addons.mozilla.org/addon/mrgreenify/), but you can also just
 install it locally if you want. For installing locally follow these steps:
 
 1. Run `npm install` and `npm run build` in the root directory.
