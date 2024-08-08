@@ -36,7 +36,7 @@
      * @returns {NodeListOf<Element>} Thumbnails on the page
      */
     function getThumbnails() {
-        const thumbnailQuery = "ytd-thumbnail:not(.ytd-video-preview, .ytd-rich-grid-slim-media) a > yt-image > img.yt-core-image:only-child:not(.yt-core-attributed-string__image-element),.ytp-videowall-still-image:not([style*='extension:'])";
+        const thumbnailQuery = "ytd-thumbnail:not(.ytd-video-preview, .ytd-rich-grid-slim-media) a > yt-image > img.yt-core-image:only-child:not(.yt-core-attributed-string__image-element)";
         return document.querySelectorAll(thumbnailQuery);
     }
 
@@ -128,6 +128,7 @@
     setInterval(() => {
         chrome.storage.local.get("enabled", (data) => {
             if (!data.enabled) {
+                // Remove mrgreens on thumbnails
                 const images = document.querySelectorAll(".mrgreen");
                 for (const image of images) {
                     image.remove();
@@ -136,6 +137,7 @@
                 return;
             }
 
+            // Add mrgreens to thumbnails
             for (const thumbnail of getThumbnails()) {
                 const { imageUrl, imageIndex } = getRandomImageUrl();
                 applyImage(thumbnail, imageUrl, imageIndex);
